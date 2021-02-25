@@ -18,61 +18,79 @@ const render = require("./lib/htmlRenderer");
 const teamArray= [];
 
 async function question(){
-    await inquirer.prompt([
-        {
-            type: 'input',
-            name:'name',
-            message: 'What is the name of the employee? : '
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: 'Enter the employee ID here: '
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: 'What is email for employee? : ',
-        },
-        {
-            type: 'list',
-            name: 'role',
-            message: 'What role does this employee have? : ',
-            choices: ['Engineer', 'Intern', 'Manager']
-        }
-]);
-    let responseInput = '';
+    let formComplete='';
+    do{
+        try{
+        response= await inquirer.prompt([
+            {
+                type: 'input',
+                name:'name',
+                message: 'What is the name of the employee? : '
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: 'Enter the employee ID here: '
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'What is email for employee? : ',
+            },
+            {
+                type: 'list',
+                name: 'role',
+                message: 'What role does this employee have? : ',
+                choices: ['Engineer', 'Intern', 'Manager']
+            }
+        ]);
+    let response2 = '';
         if (response.role === 'Engineer'){
-            responseInput= await inquirer.prompt([{
+            response2= await inquirer.prompt([{
                 type: 'input',
                 name:'Name',
                 message: 'What is the github username for employee?: ',
             }]);
-            const engineer= new Engineer(response.name, response.id, responseInput.Name);
+            const engineer= new Engineer(response.name, response.id, response2.Name);
             teamArray.push(engineer);
         }
         else if (response.role === 'Intern'){
-            responseInput= await inquirer.prompt([{
+            response2= await inquirer.prompt([{
                 type: 'input',
                 name: 'Name',
                 message: 'What school is employee currently attending?: '    
             }]);
-            const intern= new Intern(response.name, response.id, response.email, responseInput.Name);
+            const intern= new Intern(response.name, response.id, response.email, response2.Name);
             teamArray.push(intern);
         }
         else if (response.role === 'Manager'){
-            responseInput= await inquirer.prompt([{
+            response2.Name= await inquirer.prompt([{
                 type: 'input',
                 name: 'Name',
                 message: 'What is the office number for the employee?: '
             }]);
-            const manager= new Manager(response.name, response.id, reponse.email, responseInput.Name);
+            const manager= new Manager(response.name, response.id, reponse.email, response2.Name);
             teamArray.push(manager);
         }
 
-    } 
-
+    }
+    catch(err){
+        return console.log(err);
+    }
     console.log(teamArray)
+    formComplete= await inquirer.prompt([{
+        type:'list',
+        name: 'finish',
+        message: 'Do you want to continue?: ',
+        choices:[
+            'Yes',
+            'No'
+        ]
+    },]);
+    } while (formComplete.finish === "Yes");
+}
+
+
     
 
 
