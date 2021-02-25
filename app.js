@@ -48,28 +48,28 @@ async function question(){
         if (response.role === 'Engineer'){
             response2= await inquirer.prompt([{
                 type: 'input',
-                name:'Name',
+                name:'github',
                 message: 'What is the github username for employee?: ',
             }]);
-            const engineer= new Engineer(response.name, response.id, response2.Name);
+            const engineer= new Engineer(response.name, response.id, response2.github);
             teamArray.push(engineer);
         }
         else if (response.role === 'Intern'){
             response2= await inquirer.prompt([{
                 type: 'input',
-                name: 'Name',
+                name: 'school',
                 message: 'What school is employee currently attending?: '    
             }]);
-            const intern= new Intern(response.name, response.id, response.email, response2.Name);
+            const intern= new Intern(response.name, response.id, response.email, response2.school);
             teamArray.push(intern);
         }
         else if (response.role === 'Manager'){
             response2.Name= await inquirer.prompt([{
                 type: 'input',
-                name: 'Name',
+                name: 'office',
                 message: 'What is the office number for the employee?: '
             }]);
-            const manager= new Manager(response.name, response.id, reponse.email, response2.Name);
+            const manager= new Manager(response.name, response.id, reponse.email, response2.office);
             teamArray.push(manager);
         }
 
@@ -86,12 +86,23 @@ async function question(){
             'Yes',
             'No'
         ]
-    },]);
-    } while (formComplete.finish === "Yes");
-}
+    }]);
+    } 
+    while (formComplete.finish === "Yes"){
+        fs.writeFile(outputPath, render(teamArray), function(err){
+            if (err){
+                console.log(err);
+            }
+            else{
+            console.log('team.html has been created')
+            }
+        })
+    }
+};
+
+question();
 
 
-    
 
 
 
