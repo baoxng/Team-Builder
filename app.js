@@ -11,8 +11,71 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+
+const teamArray= [];
+
+async function question(){
+    await inquirer.prompt([
+        {
+            type: 'input',
+            name:'name',
+            message: 'What is the name of the employee? : '
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'Enter the employee ID here: '
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is email for employee? : ',
+        },
+        {
+            type: 'list',
+            name: 'role',
+            message: 'What role does this employee have? : ',
+            choices: ['Engineer', 'Intern', 'Manager']
+        }
+]);
+    let responseInput = '';
+        if (response.role === 'Engineer'){
+            responseInput= await inquirer.prompt([{
+                type: 'input',
+                name:'Name',
+                message: 'What is the github username for employee?: ',
+            }]);
+            const engineer= new Engineer(response.name, response.id, responseInput.Name);
+            teamArray.push(engineer);
+        }
+        else if (response.role === 'Intern'){
+            responseInput= await inquirer.prompt([{
+                type: 'input',
+                name: 'Name',
+                message: 'What school is employee currently attending?: '    
+            }]);
+            const intern= new Intern(response.name, response.id, response.email, responseInput.Name);
+            teamArray.push(intern);
+        }
+        else if (response.role === 'Manager'){
+            responseInput= await inquirer.prompt([{
+                type: 'input',
+                name: 'Name',
+                message: 'What is the office number for the employee?: '
+            }]);
+            const manager= new Manager(response.name, response.id, reponse.email, responseInput.Name);
+            teamArray.push(manager);
+        }
+
+    } 
+
+    console.log(teamArray)
+    
+
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
