@@ -10,8 +10,46 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+//function to prompt manager
+const teamArray= [];
+
+async function getManager(){
+    try{
+    let response= await inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Name of the manager.: '
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'Enter the manager ID here: '
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is email for manager? : ',
+        },
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: 'What is the office number for the employee?: '
+        }]);
+        const manager= new Manager(response.name, response.id, response.email, response.officeNumber);
+        teamArray.push(manager);
+    }catch(err){
+        return console.log(err);
+        }
+        console.log(teamArray);
+   question();     
+};
+
+getManager();
+
+//function to prompt the questions
+
 async function question(){
-    const teamArray= [];
     let formComplete='';
     do{
         try{
@@ -45,7 +83,7 @@ async function question(){
                 name:'github',
                 message: 'What is the github username for employee?: ',
             }]);
-            const engineer= new Engineer(response.name, response.id, response2.github);
+            const engineer= new Engineer(response.name, response.id, response.email, response2.github);
             teamArray.push(engineer);
         }
         else if (response.role === 'Intern'){
@@ -71,7 +109,7 @@ async function question(){
     catch(err){
         return console.log(err);
     }
-    console.log(teamArray)
+     console.log(teamArray)
     formComplete= await inquirer.prompt([{
         type:'list',
         name: 'finish',
@@ -94,5 +132,4 @@ async function question(){
     }
 };
 
-question();
 
