@@ -44,4 +44,5 @@ Now quality of GIF isn't so good, so I included the end snippet of the inputs I 
 ---
 Most definitely I know that the quality of the GIF does not have good quality, so here is the [YouTube Link](https://youtu.be/dbkfmjkjdW0) to the fully demo of running the test as well as the application.
 
-
+This is how the generated team looks like as it created a html file.
+![weblayout.PNG](/images/weblayout.PNG)
