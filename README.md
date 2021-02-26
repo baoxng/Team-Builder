@@ -29,6 +29,19 @@ I would have to say the development of this project was challenging as I was rew
 
 Here is a small demonstration of how to run the test in the terminal in VS code. 
 ![runtest.gif](/images/runtest.gif)
+
 Now if the quality of the GIF isn't so clear on how this was run. Check the image below.
 ![runtest.PNG](/images/runtest.PNG)
+
+---
+
+Here is what the application looks like when you run the file on node.
+![beginapp.gif](/images/beginapp.gif)
+
+Now quality of GIF isn't so good, so I included the end snippet of the inputs I did for my test team. 
+![teaminput.PNG](/images/teaminput.PNG)
+
+---
+Most definitely I know that the quality of the GIF does not have good quality, so here is the [YouTube Link](https://youtu.be/dbkfmjkjdW0) to the fully demo of running the test as well as the application.
+
 
