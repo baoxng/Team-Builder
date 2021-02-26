@@ -27,4 +27,8 @@ I would have to say the development of this project was challenging as I was rew
 ---
 ## Documentation
 
+Here is a small demonstration of how to run the test in the terminal in VS code. 
+![runtest.gif](/images/runtest.gif)
+Now if the quality of the GIF isn't so clear on how this was run. Check the image below.
+![runtest.PNG](/images/runtest.PNG)
 
