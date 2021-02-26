@@ -22,4 +22,9 @@ Follow these links to `Download`, `Install` and `Link` the following tools in or
 ---
 ## Development
 
+I would have to say the development of this project was challenging as I was rewatching class videos over the course of two days before starting project. I didn't really understand how to run the test correctly, but taking notes about how to run jest I was finally able to get test to run. However this wasn't the only problem that I ran into, with the started code provided, I had to create functions from the lib file to match one another. The process of this project application I was able get a good understanding on how to run tests, how to use modules, how to create constructors and class. Check out the documentation on how this application works down below. 
+
+---
+## Documentation
+
 
